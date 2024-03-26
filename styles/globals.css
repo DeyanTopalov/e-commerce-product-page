@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Install Prettier for auto class sorting */
+/* [1] npm install -D prettier-plugin-tailwindcss */
+/* [2] create .prettierrc.json in the project root (dont forget the . in the name)*/
+/* [3] add: 
+{
+    "plugins": ["prettier-plugin-tailwindcss"]
+  } */
+/* [4] If it is not working - first try relaunching VS code */
+
+
+
+/* CSS Variables based on project design */
+@layer base {
+  :root {
+    /* Primary Clrs */
+
+    --orange-dark: 26, 100%, 55%;
+    --orange-light: 25, 100%, 94%;
+
+    /* Secondary Clrs */
+    --blue-800: 220, 13%, 13%;
+    --blue-600: 219, 9%, 45%;
+    --blue-400: 220, 14%, 75%;
+    --blue-200: 223, 64%, 98%;
+    --black: 0, 0%, 0%;
+
+  }
+}
+
+/* ### Primary 
+- Orange: hsl(26, 100%, 55%) 
+- Pale orange: hsl(25, 100%, 94%) 
+
+### Neutral 
+- Very dark blue: hsl(220, 13%, 13%) 
+- Dark grayish blue: hsl(219, 9%, 45%) 
+- Grayish blue: hsl(220, 14%, 75%) 
+- Light grayish blue: hsl(223, 64%, 98%) 
+- White: hsl(0, 0%, 100%) - Black (with 75% opacity for lightbox background): hsl(0, 0%, 0%) */
