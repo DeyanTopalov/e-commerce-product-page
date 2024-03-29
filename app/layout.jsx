@@ -25,5 +25,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-
-// grid h-svh w-svw grid-cols-1 place-items-center bg-blue-100 md:h-screen md:w-full

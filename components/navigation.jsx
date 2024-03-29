@@ -1,15 +1,32 @@
+"use client";
+
+import HamburgerMenu from "./hamburger_menu";
+import HamburgerButton from "./hamburger_button";
+import { IconCart, Avatar, Logo } from "./ui/icons";
+import { useState } from "react";
+
 const Navigation = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div className="flex h-6 items-center justify-between px-6 py-5 md:h-[3.125rem] md:px-0 md:py-7">
-      <div className="flex gap-2">
-        <nav>Navigation</nav>
-        <div>logo</div>
+    <section className="flex items-center justify-between gap-4 px-5 py-2">
+      <HamburgerButton
+        isOpen={isOpen}
+        toggleMenu={toggleMenu}
+        className="z-10 block  md:hidden"
+      />
+      <Logo className="sm:flex sm:grow" />
+      <HamburgerMenu isOpen={isOpen} toggleMenu={toggleMenu} />
+
+      <div className="flex items-center gap-2">
+        <IconCart />
+        <Avatar />
       </div>
-      <div>
-        <div>Cart</div>
-        <div>Avatar</div>
-      </div>
-    </div>
+    </section>
   );
 };
 

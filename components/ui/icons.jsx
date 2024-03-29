@@ -19,7 +19,7 @@ export const IconClose = () => {
       width={13.44}
       height={13.44}
       alt="menu close icon"
-      className=""
+      className=" transition-all duration-1000 ease-in-out"
     />
   );
 };
@@ -31,7 +31,7 @@ export const IconMenu = () => {
       width={16}
       height={15}
       alt="menu icon"
-      className=""
+      className=" transition-all duration-1000 ease-in-out"
     />
   );
 };
@@ -132,5 +132,17 @@ export const Avatar = () => {
         className="hidden md:block"
       />
     </>
+  );
+};
+
+export const Logo = () => {
+  return (
+    <Image
+      src="/logo.svg"
+      width={137.5}
+      height={20}
+      alt="logo img"
+      className=""
+    />
   );
 };
