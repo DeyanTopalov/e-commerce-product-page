@@ -1,6 +1,6 @@
 import { kumbhSans } from "./ui/fonts";
 import "@styles/globals.css";
-import Navigation from "@components/navigation";
+import Navigation from "@components/navbar/navigation";
 
 export const metadata = {
   title: "E-commerce Product Page",
@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${kumbhSans.className}text-base grid place-items-center gap-0 bg-blue-100 antialiased md:h-screen md:w-full`}
       >
-        <header className="sticky top-0 w-full bg-yellow-100 md:max-w-[69.375rem]">
+        <header className="sticky top-0 w-full bg-white md:max-w-[69.375rem]">
           <Navigation />
         </header>
         <main

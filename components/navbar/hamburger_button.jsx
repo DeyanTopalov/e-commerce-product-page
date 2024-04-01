@@ -1,4 +1,4 @@
-import { IconMenu, IconClose } from "./ui/icons";
+import { IconMenu, IconClose } from "../ui/icons";
 
 const HamburgerButton = ({ isOpen, toggleMenu, className }) => {
   return (

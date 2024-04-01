@@ -2,7 +2,7 @@
 
 import HamburgerMenu from "./hamburger_menu";
 import HamburgerButton from "./hamburger_button";
-import { IconCart, Avatar, Logo } from "./ui/icons";
+import { IconCart, Avatar, Logo } from "../ui/icons";
 import { useState } from "react";
 
 const Navigation = () => {
@@ -13,7 +13,7 @@ const Navigation = () => {
   };
 
   return (
-    <section className="flex items-center justify-between gap-4 px-5 py-2">
+    <section className="flex items-center justify-between gap-14 px-5 py-2 md:border-b-2 md:border-slate-400 md:px-2 md:py-7 2xl:px-0">
       <HamburgerButton
         isOpen={isOpen}
         toggleMenu={toggleMenu}
@@ -22,7 +22,7 @@ const Navigation = () => {
       <Logo className="sm:flex sm:grow" />
       <HamburgerMenu isOpen={isOpen} toggleMenu={toggleMenu} />
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-6 md:gap-12">
         <IconCart />
         <Avatar />
       </div>
@@ -31,3 +31,5 @@ const Navigation = () => {
 };
 
 export default Navigation;
+
+// fix the final styles for mobile view, and then work entirely on desktop view
