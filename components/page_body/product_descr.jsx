@@ -1,15 +1,20 @@
 "use client";
 
-import { ButtonIncrement, ButtonDecrement } from "@components/ui/buttons";
+import {
+  ButtonIncrement,
+  ButtonDecrement,
+  ButtonAddToCart,
+} from "@components/ui/buttons";
 import { useState } from "react";
+import { IconCartWhite } from "@components/ui/icons";
 
 const ProductDescr = () => {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const handleIncrement = () => {
     setQuantity(quantity + 1);
   };
   const handleDecrement = () => {
-    quantity > 0 && setQuantity(quantity - 1);
+    quantity > 1 && setQuantity(quantity - 1);
   };
   return (
     <div className=" grid gap-4 px-6 pb-[5.5rem] pt-6">
@@ -61,7 +66,13 @@ const ProductDescr = () => {
             onClick={handleIncrement}
           />
         </div>
-        <div className="h-[56px] w-full bg-orange-600">Add to cart</div>
+        {/* <div className="h-[56px] w-full rounded-xl bg-clr-orange-dark"> */}
+        <ButtonAddToCart
+          className={
+            "flex h-[56px] w-full items-center justify-center gap-6 rounded-xl bg-clr-orange-dark  font-bold  text-white hover:cursor-pointer"
+          }
+        />
+        {/* </div> */}
       </div>
     </div>
   );

@@ -1,13 +1,25 @@
 import Image from "next/image";
 
-export const IconCart = () => {
+export const IconCart = ({ className }) => {
   return (
     <Image
       src="/icon-cart.svg"
       width={22}
       height={20}
       alt="shoping cart icon"
-      className=""
+      className={className}
+    />
+  );
+};
+
+export const IconCartWhite = () => {
+  return (
+    <Image
+      src="/icon-cart-white.svg"
+      width={22}
+      height={20}
+      alt="shoping cart icon"
+      className="stroke-green-600"
     />
   );
 };
@@ -135,14 +147,14 @@ export const Avatar = () => {
   );
 };
 
-export const Logo = () => {
+export const Logo = ({ className }) => {
   return (
     <Image
       src="/logo.svg"
       width={137.5}
       height={20}
       alt="logo img"
-      className=""
+      className={className}
     />
   );
 };

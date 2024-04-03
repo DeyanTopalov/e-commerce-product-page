@@ -1,4 +1,10 @@
-import { IconMinus, IconPlus, IconCart } from "./icons";
+import {
+  IconMinus,
+  IconPlus,
+  IconCartWhite,
+  IconNext,
+  IconPrevious,
+} from "./icons";
 
 export const ButtonIncrement = ({ className, onClick }) => {
   return (
@@ -35,11 +41,45 @@ export const ButtonDecrement = ({
   );
 };
 
-// Template to set dynamic role, type & aria-label
-export const SomeButton = ({ className, onClick }) => {
+export const ButtonAddToCart = ({ className, onClick }) => {
   return (
-    <button className={className} onClick={onClick}>
-      SomeButton
+    <button
+      className={className}
+      onClick={onClick}
+      role="button"
+      type="button"
+      aria-label="Add to cart"
+    >
+      <IconCartWhite />
+      <p>Add to cart</p>
+    </button>
+  );
+};
+
+export const ButtonNext = ({ className, onClick }) => {
+  return (
+    <button
+      className={className}
+      onClick={onClick}
+      role="button"
+      type="button"
+      aria-label="Next"
+    >
+      <IconNext />
+    </button>
+  );
+};
+
+export const ButtonPrevious = ({ className, onClick }) => {
+  return (
+    <button
+      className={className}
+      onClick={onClick}
+      role="button"
+      type="button"
+      aria-label="Previous"
+    >
+      <IconPrevious />
     </button>
   );
 };
