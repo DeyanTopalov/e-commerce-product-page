@@ -13,7 +13,7 @@ const Navigation = () => {
   };
 
   return (
-    <section className="flex items-center justify-between gap-14 px-5 py-2 md:border-b-2 md:border-slate-400 md:px-2 md:py-7 2xl:px-0">
+    <section className="flex items-center justify-between gap-14 px-5 py-2 md:border-b-[1px] md:border-slate-200 md:px-2 md:py-7 2xl:px-0">
       <HamburgerButton
         isOpen={isOpen}
         toggleMenu={toggleMenu}
