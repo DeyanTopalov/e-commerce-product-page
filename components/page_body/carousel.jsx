@@ -46,19 +46,6 @@ const Carousel = () => {
     setCurrentIndex(newIndex);
   };
 
-  //! To be Tested
-  //? Create a Test carousel component and layout the image next
-  //? to eachother, with padding in between so it can be swiped like
-  //? in the pricing component carousel. Then just add the func for the
-  //? buttons
-
-  //! hide scrollbar with this:
-  // /* Target the horizontal scrollbar track (hide it) */
-  // .custom-scrollbar::-webkit-scrollbar {
-  // height: 0 !important; /* Set height to 0 for horizontal scrollbar // */
-  // background-color: transparent !important; /* Set background to transparent */
-  //}
-
   return (
     <div
       className="scrollbar-none relative z-0 flex h-[18.75rem] w-full items-center overflow-hidden"
@@ -73,8 +60,12 @@ const Carousel = () => {
           width={375}
           height={300}
           alt="Product image"
-          className={`absolute h-full w-full object-cover transition-all duration-300 ease-in ${
-            index === currentIndex ? "opacity-100" : "opacity-0"
+          className={`absolute h-full w-full object-cover transition-transform duration-300 ease-in-out ${
+            index === currentIndex
+              ? "translate-x-0"
+              : index < currentIndex
+                ? " -translate-x-full"
+                : "translate-x-full"
           }`}
         />
       ))}

@@ -7,7 +7,7 @@ import Carousel2 from "@components/page_body/carousel copy";
 export default function Home() {
   return (
     <section>
-      <Carousel2 />
+      <Carousel />
       <ProductDescr />
     </section>
   );
