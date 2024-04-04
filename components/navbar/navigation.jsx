@@ -18,7 +18,7 @@ const Navigation = () => {
         <HamburgerButton
           isOpen={isOpen}
           toggleMenu={toggleMenu}
-          className="z-10 block  md:hidden"
+          className="z-50 block  md:hidden"
         />
         <Logo className="mb-1 sm:flex sm:grow" />
       </div>

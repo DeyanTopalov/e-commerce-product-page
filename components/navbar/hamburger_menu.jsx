@@ -30,7 +30,7 @@ const HamburgerMenu = ({ isOpen, toggleMenu }) => {
           className={`${isOpen ? "inset-y-0 left-0 " : "invisible inset-y-0 -left-full"} absolute z-0 h-screen w-[66.6%] bg-white  transition-all duration-300 ease-in-out`}
           onClick={handleClickOutside}
         >
-          <NavLinks className="z-10 flex flex-col justify-center gap-5 bg-inherit px-6 pt-[5.75rem] text-lg font-bold text-black " />
+          <NavLinks className="z-50 flex flex-col justify-center gap-5 bg-inherit px-6 pt-[5.75rem] text-lg font-bold text-black " />
         </nav>
       ) : (
         <nav className="flex grow">

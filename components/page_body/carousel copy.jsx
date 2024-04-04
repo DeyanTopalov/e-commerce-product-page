@@ -5,34 +5,8 @@ import { productImages } from "@lib/utils";
 import Image from "next/image";
 import { ButtonNext, ButtonPrevious } from "@components/ui/buttons";
 
-const Carousel = () => {
+const Carousel2 = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const touchStartX = useRef(null);
-  const touchEndX = useRef(null);
-
-  const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchMove = (e) => {
-    touchEndX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = () => {
-    if (
-      touchStartX.current &&
-      touchEndX.current &&
-      Math.abs(touchStartX.current - touchEndX.current) > 50 // Adjust threshold as needed
-    ) {
-      if (touchStartX.current - touchEndX.current > 0) {
-        nextSlide();
-      } else {
-        prevSlide();
-      }
-    }
-    touchStartX.current = null;
-    touchEndX.current = null;
-  };
 
   const prevSlide = () => {
     const isFirstSlide = currentIndex === 0;
@@ -60,39 +34,37 @@ const Carousel = () => {
   //}
 
   return (
-    <div
-      className="scrollbar-none relative z-0 flex h-[18.75rem] w-full items-center overflow-hidden"
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-    >
-      {productImages.map((image, index) => (
+    <div className="scrollbar-hidden grid h-[18.75rem] w-full snap-x auto-cols-max grid-flow-col grid-rows-1  overflow-x-auto bg-blue-200">
+      <div className="span-3 snap-center">
         <Image
-          key={image.url}
-          src={image.url}
+          src="/image-product-1.jpg"
           width={375}
           height={300}
-          alt="Product image"
-          className={`absolute h-full w-full object-cover transition-all duration-300 ease-in ${
-            index === currentIndex ? "opacity-100" : "opacity-0"
-          }`}
+          alt="product image"
+          className="h-full w-full object-cover"
         />
-      ))}
+      </div>
+      <div className="span-3 snap-center">
+        <Image
+          src="/image-product-2.jpg"
+          width={375}
+          height={300}
+          alt="product image"
+          className="h-full w-full object-cover"
+        />
+      </div>
 
-      <ButtonPrevious
-        className="absolute left-4  flex size-10 items-center justify-center rounded-full bg-white"
-        onClick={prevSlide}
-      />
-      <ButtonNext
-        className="absolute right-4  flex size-10 items-center justify-center rounded-full bg-white"
-        onClick={nextSlide}
-      />
+      {/* <div className="size-64  snap-center bg-red-300"></div>
+      <div className="size-64 snap-center bg-green-300"></div>
+      <div className="size-64 snap-center bg-purple-300"></div> */}
     </div>
   );
 };
 
-export default Carousel;
+export default Carousel2;
 
+// width={375}
+// height={300}
 //  <div className="relative overflow-hidden">
 //       <div className="flex w-full">
 //         {images.map((image, index) => (

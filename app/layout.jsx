@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${kumbhSans.className}text-base grid place-items-center gap-0 bg-white antialiased md:h-screen md:w-full`}
       >
-        <header className="sticky top-0 w-full bg-white md:max-w-[69.375rem]">
+        <header className="sticky top-0 z-50 w-full bg-white md:max-w-[69.375rem]">
           <Navigation />
         </header>
         <main
