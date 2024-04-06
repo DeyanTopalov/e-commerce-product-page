@@ -5,7 +5,7 @@ import { productImages } from "@lib/utils";
 import Image from "next/image";
 import { ButtonNext, ButtonPrevious } from "@components/ui/buttons";
 
-const MobileCarousel = () => {
+const MobileCarousel = ({ className }) => {
   const containerRef = useRef(null);
   const [isFirstImage, setIsFirstImage] = useState(true);
   const [isLastImage, setIsLastImage] = useState(false);
@@ -46,10 +46,7 @@ const MobileCarousel = () => {
   };
 
   return (
-    <section
-      className=" relative grid h-[18.75rem] w-svw md:hidden "
-      aria-label="Product Images Carousel"
-    >
+    <section className={className} aria-label="Product Images Carousel">
       <div
         className="scrollbar-hidden relative grid snap-x snap-mandatory auto-cols-max grid-flow-col grid-rows-1 gap-2 overflow-hidden overflow-x-auto overscroll-x-contain"
         ref={containerRef}
@@ -83,74 +80,3 @@ const MobileCarousel = () => {
 };
 
 export default MobileCarousel;
-
-// ${index === currentIndex ?? "translate-x-16 transform"}`}
-
-// width={375}
-// height={300}
-//  <div className="relative overflow-hidden">
-//       <div className="flex w-full">
-//         {images.map((image, index) => (
-//           <Image
-//             key={image.url}
-//             src={image.url}
-//             alt={image.alt}
-//             className={`object-cover h-full w-full absolute top-0 left-0 transition duration-500 ease-in-out ${
-//               index === activeIndex ? '' : 'hidden'
-//             }`}
-//           />
-//         ))}
-//       </div>
-
-// Working but can not slide
-
-// return (
-//     <div className="relative flex h-[18.75rem] w-full items-center overflow-hidden">
-//       <Image
-//         src={`${productImages[currentIndex].url}`}
-//         width={375}
-//         height={300}
-//         alt="product image"
-//         className="h-full w-full object-cover"
-//       />
-//       <ButtonPrevious
-//         className="absolute left-4  flex size-10 items-center justify-center rounded-full bg-white"
-//         onClick={prevSlide}
-//       />
-//       <ButtonNext
-//         className="absolute right-4  flex size-10 items-center justify-center rounded-full bg-white"
-//         onClick={nextSlide}
-//       />
-//     </div>
-//   );
-// };
-
-{
-  /* <div className="w-[100svw] snap-center">
-        <Image
-          src="/image-product-1.jpg"
-          width={375}
-          height={300}
-          alt="product image"
-          className="h-full w-full object-cover"
-        />
-      </div>
-      <div className="w-[100svw] snap-center">
-        <Image
-          src="/image-product-2.jpg"
-          width={375}
-          height={300}
-          alt="product image"
-          className="h-full w-full object-cover"
-        />
-      </div>
-      <div className="w-[100svw] snap-center">
-        <Image
-          src="/image-product-1.jpg"
-          width={375}
-          height={300}
-          alt="product image"
-          className="h-full w-full object-cover"
-        />
-      </div> */
-}

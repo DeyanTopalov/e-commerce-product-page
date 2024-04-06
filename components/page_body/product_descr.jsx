@@ -7,7 +7,7 @@ import {
 } from "@components/ui/buttons";
 import { useState } from "react";
 
-const ProductDescr = () => {
+const ProductDescr = ({ className }) => {
   const [quantity, setQuantity] = useState(1);
   const handleIncrement = () => {
     setQuantity(quantity + 1);
@@ -16,7 +16,7 @@ const ProductDescr = () => {
     quantity > 1 && setQuantity(quantity - 1);
   };
   return (
-    <div className=" grid gap-4 px-6 pb-[5.5rem] pt-6 md:max-w-[27.8125rem]">
+    <div className={className}>
       <h1 className="text-xs font-bold uppercase tracking-widest text-clr-orange-dark md:text-sm">
         Sneaker Company
       </h1>
@@ -65,13 +65,12 @@ const ProductDescr = () => {
             onClick={handleIncrement}
           />
         </div>
-        {/* <div className="h-[56px] w-full rounded-xl bg-clr-orange-dark"> */}
+
         <ButtonAddToCart
           className={
             "flex h-[56px] w-full items-center justify-center gap-6 rounded-xl bg-clr-orange-dark  font-bold  text-white hover:cursor-pointer"
           }
         />
-        {/* </div> */}
       </div>
     </div>
   );
