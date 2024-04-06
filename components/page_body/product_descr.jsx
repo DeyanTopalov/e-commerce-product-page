@@ -6,7 +6,6 @@ import {
   ButtonAddToCart,
 } from "@components/ui/buttons";
 import { useState } from "react";
-import { IconCartWhite } from "@components/ui/icons";
 
 const ProductDescr = () => {
   const [quantity, setQuantity] = useState(1);
@@ -17,7 +16,7 @@ const ProductDescr = () => {
     quantity > 1 && setQuantity(quantity - 1);
   };
   return (
-    <div className=" grid gap-4 px-6 pb-[5.5rem] pt-6">
+    <div className=" grid gap-4 px-6 pb-[5.5rem] pt-6 md:max-w-[27.8125rem]">
       <h1 className="text-xs font-bold uppercase tracking-widest text-clr-orange-dark md:text-sm">
         Sneaker Company
       </h1>

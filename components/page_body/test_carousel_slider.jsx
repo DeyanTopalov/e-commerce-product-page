@@ -1,5 +1,7 @@
 "use client";
 
+//! Component not in Use. Code kept for future references
+
 import { useState, useRef } from "react";
 import { productImages } from "@lib/utils";
 import Image from "next/image";
@@ -22,16 +24,20 @@ const Carousel2 = () => {
 
   return (
     <div className=" relative grid h-[18.75rem] w-svw  ">
-      <div className="scrollbar-hidden relative grid   snap-x snap-mandatory auto-cols-max grid-flow-col grid-rows-1 gap-2 overflow-x-auto overscroll-x-contain">
+      <div className="scrollbar-hidden relative grid   snap-x snap-mandatory auto-cols-max grid-flow-col grid-rows-1 gap-2 overflow-hidden overflow-x-auto overscroll-x-contain">
         {productImages.map((image, index) => (
-          <div key={image.url} className="w-[100svw] snap-center">
+          <div
+            key={image.url}
+            className="w-[100svw] snap-center overflow-hidden transition-all duration-300 ease-in-out"
+            style={{ translate: `calc(${-100 * currentIndex}% )` }}
+          >
             <Image
               key={image.url}
               src={image.url}
               width={375}
               height={300}
               alt="Product image"
-              className={` h-full w-full object-cover transition-all duration-300 ease-in ${index === currentIndex ?? "translate-x-16 transform"}`}
+              className={` h-full w-svw overflow-hidden object-cover transition-all duration-300 ease-in`}
             />
           </div>
         ))}
@@ -49,6 +55,8 @@ const Carousel2 = () => {
 };
 
 export default Carousel2;
+
+// ${index === currentIndex ?? "translate-x-16 transform"}`}
 
 // width={375}
 // height={300}

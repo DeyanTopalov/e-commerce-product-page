@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Navigation from "@components/navbar/navigation";
-import Carousel from "@components/page_body/carousel";
 import ProductDescr from "@components/page_body/product_descr";
-import Carousel2 from "@components/page_body/carousel copy";
+
+import MobileCarousel from "@components/page_body/mobile_carousel";
 
 export default function Home() {
   return (
-    <section>
-      <Carousel />
+    <section className="grid md:flex md:justify-between">
+      <div className="hidden bg-red-300 md:block md:h-[565px] md:w-[445px]"></div>
+      <MobileCarousel />
       <ProductDescr />
     </section>
   );

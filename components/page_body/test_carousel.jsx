@@ -1,5 +1,7 @@
 "use client";
 
+//! Component not in Use. Code kept for future references
+
 import { useState, useRef } from "react";
 import { productImages } from "@lib/utils";
 import Image from "next/image";
