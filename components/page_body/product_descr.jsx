@@ -20,16 +20,16 @@ const ProductDescr = ({ className }) => {
       <h1 className="text-xs font-bold uppercase tracking-widest text-clr-orange-dark md:text-sm">
         Sneaker Company
       </h1>
-      <h2 className="text-[1.75rem] font-bold leading-snug">
+      <h2 className="text-[1.75rem] font-bold leading-snug md:text-[2.75rem] md:leading-[3rem]">
         Fall Limited Edition Sneakers
       </h2>
-      <p className="text-[15px] text-clr-blue-600">
+      <p className="text-[15px] text-clr-blue-600 md:text-base ">
         These low-profile sneakers are your perfect casual wear companion.
         Featuring a durable rubber outer sole, they&apos;ll withstand everything
         the weather can offer.
       </p>
-      <div className="Pricing_and_buttons grid gap-4">
-        <div className="pricing flex w-full items-center justify-between">
+      <div className="Pricing_and_buttons grid gap-4 md:gap-8">
+        <div className="pricing flex w-full items-center justify-between md:flex-col md:items-start md:gap-3">
           <div className="flex items-center gap-6">
             <span className="text-[1.75rem] font-bold">
               <span className="sr-only">Discounted price</span>
@@ -45,35 +45,39 @@ const ProductDescr = ({ className }) => {
             $250.00
           </span>
         </div>
-        <div className="grid h-[56px] w-full grid-cols-3 place-items-center gap-20 overflow-hidden rounded-xl bg-clr-blue-200 ">
-          <ButtonDecrement
+        <div className="btns_and_counter grid gap-4 md:grid-cols-[37%,63%]">
+          <div className="grid h-[56px] w-full grid-cols-3 place-items-center gap-20 overflow-hidden rounded-xl bg-clr-blue-200 md:gap-0 ">
+            <ButtonDecrement
+              className={
+                "flex size-full items-center justify-center  hover:cursor-pointer"
+              }
+              onClick={handleDecrement}
+              role="button"
+              type="button"
+              ariaLabel="Decrement quantity"
+            />
+            <span className="flex size-full items-center justify-center font-bold">
+              {quantity}
+            </span>
+            <ButtonIncrement
+              className={
+                "flex size-full items-center justify-center  hover:cursor-pointer"
+              }
+              onClick={handleIncrement}
+            />
+          </div>
+
+          <ButtonAddToCart
             className={
-              "flex size-full items-center justify-center  hover:cursor-pointer"
+              "flex h-[56px] w-full items-center justify-center gap-6  rounded-xl  bg-clr-orange-dark font-bold text-white drop-shadow-[0_25px_25px_rgba(255,125,26,0.25)] hover:cursor-pointer md:drop-shadow-none"
             }
-            onClick={handleDecrement}
-            role="button"
-            type="button"
-            ariaLabel="Decrement quantity"
-          />
-          <span className="flex size-full items-center justify-center font-bold">
-            {quantity}
-          </span>
-          <ButtonIncrement
-            className={
-              "flex size-full items-center justify-center  hover:cursor-pointer"
-            }
-            onClick={handleIncrement}
           />
         </div>
-
-        <ButtonAddToCart
-          className={
-            "flex h-[56px] w-full items-center justify-center gap-6 rounded-xl bg-clr-orange-dark  font-bold  text-white hover:cursor-pointer"
-          }
-        />
       </div>
     </div>
   );
 };
 
 export default ProductDescr;
+
+// remove the draft classes of Pricing_and_buttons etc..

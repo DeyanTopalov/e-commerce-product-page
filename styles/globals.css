@@ -45,6 +45,7 @@
 
 .test {
   color: hsl(223, 64%, 98%);
+  color: rgb(255, 125, 26);
 }
 
 .scrollbar-hidden::-webkit-scrollbar {

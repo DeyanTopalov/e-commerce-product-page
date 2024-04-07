@@ -32,13 +32,20 @@ const HamburgerMenu = ({ isOpen, toggleMenu }) => {
   return (
     <>
       {mobileView ? (
-        <nav
-          ref={menuRef}
-          className={`${isOpen ? "inset-y-0 left-0 " : "invisible inset-y-0 -left-full"} absolute z-0 h-screen w-[66.6%] bg-white  transition-all duration-300 ease-in-out`}
-          onClick={handleClickOutside}
-        >
-          <NavLinks className="z-50 flex flex-col justify-center gap-5 bg-inherit px-6 pt-[5.75rem] text-lg font-bold text-black " />
-        </nav>
+        <>
+          <div
+            className={`${
+              isOpen ? "fixed inset-0 z-0 bg-gray-900 opacity-75" : "hidden"
+            }`}
+          />
+          <nav
+            ref={menuRef}
+            className={`${isOpen ? "inset-y-0 left-0 " : "invisible inset-y-0 -left-full"} absolute z-0 h-screen w-[66.6%] bg-white  transition-all duration-300 ease-in-out`}
+            onClick={handleClickOutside}
+          >
+            <NavLinks className="z-50 flex flex-col justify-center gap-5 bg-inherit px-6 pt-[5.75rem] text-lg font-bold text-black " />
+          </nav>
+        </>
       ) : (
         <nav className="flex grow">
           <NavLinks className="flex items-center gap-8" />
