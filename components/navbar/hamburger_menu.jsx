@@ -35,7 +35,7 @@ const HamburgerMenu = ({ isOpen, toggleMenu }) => {
         <>
           <div
             className={`${
-              isOpen ? "fixed inset-0 z-0 bg-gray-900 opacity-75" : "hidden"
+              isOpen ? "fixed inset-0 z-0 bg-gray-950 opacity-75" : "hidden"
             }`}
           />
           <nav

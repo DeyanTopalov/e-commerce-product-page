@@ -27,7 +27,7 @@ const Navigation = () => {
 
       <div className="flex items-center gap-6 md:gap-12">
         <IconCart />
-        <Avatar />
+        <Avatar className=" cursor-pointer rounded-full transition-all duration-150 ease-in-out hover:outline hover:outline-2 hover:outline-offset-1 hover:outline-orange-500" />
       </div>
     </section>
   );

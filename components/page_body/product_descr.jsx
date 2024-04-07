@@ -49,19 +49,19 @@ const ProductDescr = ({ className }) => {
           <div className="grid h-[56px] w-full grid-cols-3 place-items-center gap-20 overflow-hidden rounded-xl bg-clr-blue-200 md:gap-0 ">
             <ButtonDecrement
               className={
-                "flex size-full items-center justify-center  hover:cursor-pointer"
+                "flex size-full cursor-pointer items-center  justify-center hover:opacity-75"
               }
               onClick={handleDecrement}
               role="button"
               type="button"
               ariaLabel="Decrement quantity"
             />
-            <span className="flex size-full items-center justify-center font-bold">
+            <span className="flex size-full items-center justify-center font-bold ">
               {quantity}
             </span>
             <ButtonIncrement
               className={
-                "flex size-full items-center justify-center  hover:cursor-pointer"
+                "flex size-full cursor-pointer items-center  justify-center hover:opacity-75"
               }
               onClick={handleIncrement}
             />
@@ -69,7 +69,7 @@ const ProductDescr = ({ className }) => {
 
           <ButtonAddToCart
             className={
-              "flex h-[56px] w-full items-center justify-center gap-6  rounded-xl  bg-clr-orange-dark font-bold text-white drop-shadow-[0_25px_25px_rgba(255,125,26,0.25)] hover:cursor-pointer md:drop-shadow-none"
+              "flex h-[56px] w-full items-center justify-center gap-6  rounded-xl  bg-clr-orange-dark font-bold text-white drop-shadow-[0_25px_25px_rgba(255,125,26,0.25)] hover:cursor-pointer hover:opacity-75 md:drop-shadow-none"
             }
           />
         </div>

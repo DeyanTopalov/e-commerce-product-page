@@ -126,9 +126,9 @@ export const IconPrevious = () => {
   );
 };
 
-export const Avatar = () => {
+export const Avatar = ({ className }) => {
   return (
-    <>
+    <div className={className}>
       <Image
         src="/image-avatar.png"
         width={24}
@@ -143,7 +143,7 @@ export const Avatar = () => {
         alt="user avatar photo"
         className="hidden md:block"
       />
-    </>
+    </div>
   );
 };
 
