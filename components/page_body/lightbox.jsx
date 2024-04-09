@@ -4,9 +4,24 @@ import Image from "next/image";
 import { productImages } from "@lib/utils";
 import { SvgClose } from "@components/ui/icons";
 import { useState } from "react";
+import { ButtonNext, ButtonPrevious } from "@components/ui/buttons";
 
 const Lightbox = ({ className, handleIsLightboxOpen }) => {
   const [selectedImage, setSelectedImage] = useState(0);
+
+  const prevSlide = () => {
+    const isFristSlide = selectedImage === 0;
+    const newIdenx = isFristSlide
+      ? productImages.length - 1
+      : selectedImage - 1;
+    setSelectedImage(newIdenx);
+  };
+
+  const nextSlide = () => {
+    const isLastSlide = selectedImage === productImages.length - 1;
+    const newIdenx = isLastSlide ? 0 : selectedImage + 1;
+    setSelectedImage(newIdenx);
+  };
 
   const handleThumbnailClick = (index) => {
     setSelectedImage(index);
@@ -26,15 +41,24 @@ const Lightbox = ({ className, handleIsLightboxOpen }) => {
       >
         <SvgClose className="fill-white transition-colors duration-100 ease-in-out hover:fill-orange-500" />
       </button>
-      <div className="max-w-[34.375rem] cursor-pointer overflow-hidden rounded-3xl">
+      <div className="relative flex max-w-[34.375rem] cursor-pointer items-center ">
         <Image
           src={productImages[selectedImage].url}
           width={550}
           height={550}
           alt={`Product Image`}
-          className="h-full w-full object-cover"
+          className="h-full w-full rounded-3xl object-cover"
+        />
+        <ButtonPrevious
+          className="absolute -left-4 z-10 flex size-10 cursor-pointer items-center justify-center place-self-center rounded-full bg-white"
+          onClick={prevSlide}
+        />
+        <ButtonNext
+          className="absolute -right-4 z-10 flex size-10 cursor-pointer items-center justify-center place-self-center rounded-full bg-white"
+          onClick={nextSlide}
         />
       </div>
+
       <div className="flex max-w-[34.375rem]  justify-between gap-1 px-[3.375rem]">
         {productThumbnails.map((thumbnail, index) => (
           <div
