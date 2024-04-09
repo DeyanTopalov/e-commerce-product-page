@@ -2,16 +2,11 @@
 import { productThumbnails } from "@lib/utils";
 import Image from "next/image";
 import { productImages } from "@lib/utils";
-import Lightbox from "./lightbox";
+import { SvgClose } from "@components/ui/icons";
 import { useState } from "react";
 
-const DesktopGallery = ({ className }) => {
+const Lightbox = ({ className, handleIsLightboxOpen }) => {
   const [selectedImage, setSelectedImage] = useState(0);
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-
-  const handleIsLightboxOpen = () => {
-    setIsLightboxOpen(!isLightboxOpen);
-  };
 
   const handleThumbnailClick = (index) => {
     setSelectedImage(index);
@@ -20,26 +15,27 @@ const DesktopGallery = ({ className }) => {
   const isSelected = (index) => {
     return index === selectedImage;
   };
-
   return (
-    <div className={className}>
-      {isLightboxOpen && (
-        <Lightbox
-          className="fixed inset-0 z-[9999] grid h-full w-full place-content-center gap-10 bg-slate-950/75"
-          handleIsLightboxOpen={handleIsLightboxOpen}
-        />
-      )}
-      <div className="cursor-pointer overflow-hidden rounded-3xl">
+    <section className={className}>
+      <button
+        className="-mb-6 cursor-pointer place-self-end"
+        role="button"
+        type="button"
+        aria-label="Close Lightbox"
+        onClick={handleIsLightboxOpen}
+      >
+        <SvgClose className="fill-white transition-colors duration-100 ease-in-out hover:fill-orange-500" />
+      </button>
+      <div className="max-w-[34.375rem] cursor-pointer overflow-hidden rounded-3xl">
         <Image
-          onClick={handleIsLightboxOpen}
           src={productImages[selectedImage].url}
-          width={445}
-          height={445}
+          width={550}
+          height={550}
           alt={`Product Image`}
           className="h-full w-full object-cover"
         />
       </div>
-      <div className="flex w-full justify-between gap-1">
+      <div className="flex max-w-[34.375rem]  justify-between gap-1 px-[3.375rem]">
         {productThumbnails.map((thumbnail, index) => (
           <div
             key={index}
@@ -58,8 +54,8 @@ const DesktopGallery = ({ className }) => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
-export default DesktopGallery;
+export default Lightbox;
