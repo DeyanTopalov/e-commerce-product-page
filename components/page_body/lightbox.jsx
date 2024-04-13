@@ -41,12 +41,12 @@ const Lightbox = ({ className, handleIsLightboxOpen }) => {
       >
         <SvgClose className="fill-white transition-colors duration-100 ease-in-out hover:fill-orange-500" />
       </button>
-      <div className="relative flex max-w-[34.375rem] cursor-pointer items-center ">
+      <div className="relative flex max-w-[34.375rem] cursor-pointer items-center  ">
         <Image
           src={productImages[selectedImage].url}
           width={550}
           height={550}
-          alt={`Product Image`}
+          alt={`Product Image ${selectedImage + 1}`}
           className="h-full w-full rounded-3xl object-cover"
         />
         <ButtonPrevious

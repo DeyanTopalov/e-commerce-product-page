@@ -5,16 +5,21 @@ import {
   ButtonDecrement,
   ButtonAddToCart,
 } from "@components/ui/buttons";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "@context/CartContext";
 
 const ProductDescr = ({ className }) => {
-  const [quantity, setQuantity] = useState(1);
+  // const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useContext(CartContext);
+  const [productQuantity, setProductQuantity] = useState(1);
+
   const handleIncrement = () => {
-    setQuantity(quantity + 1);
+    setProductQuantity(productQuantity + 1);
   };
   const handleDecrement = () => {
-    quantity > 1 && setQuantity(quantity - 1);
+    productQuantity > 1 && setProductQuantity(productQuantity - 1);
   };
+
   return (
     <div className={className}>
       <h1 className="text-xs font-bold uppercase tracking-widest text-clr-orange-dark md:text-sm">
@@ -57,7 +62,7 @@ const ProductDescr = ({ className }) => {
               ariaLabel="Decrement quantity"
             />
             <span className="flex size-full items-center justify-center font-bold ">
-              {quantity}
+              {productQuantity}
             </span>
             <ButtonIncrement
               className={
@@ -71,6 +76,7 @@ const ProductDescr = ({ className }) => {
             className={
               "flex h-[56px] w-full items-center justify-center gap-6  rounded-xl  bg-clr-orange-dark font-bold text-white drop-shadow-[0_25px_25px_rgba(255,125,26,0.25)] hover:cursor-pointer hover:opacity-75 md:drop-shadow-none"
             }
+            onClick={() => addToCart(productQuantity)}
           />
         </div>
       </div>
