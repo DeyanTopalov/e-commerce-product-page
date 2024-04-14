@@ -3,12 +3,17 @@
 import HamburgerMenu from "./hamburger_menu";
 import HamburgerButton from "./hamburger_button";
 import { IconCart, Avatar, Logo } from "../ui/icons";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { CartContext } from "@context/CartContext";
 
 const Navigation = () => {
+  const [isClient, setIsClient] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const { quantity } = useContext(CartContext);
+  const { cartQuantity } = useContext(CartContext);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -32,9 +37,19 @@ const Navigation = () => {
           className="relative
         "
         >
-          <span className="badge full absolute -right-1 -top-1 flex h-[13px] w-[19px] items-center justify-center rounded-full bg-orange-500 text-[10px] font-bold text-white">
-            {quantity}
-          </span>
+          {/* Renders badge on client only, to avoid hydration mismatch */}
+          {isClient && (
+            <span
+              className={`${
+                cartQuantity < 1
+                  ? "hidden"
+                  : "badge full absolute -right-1 -top-1 flex h-[13px] w-[19px] items-center justify-center rounded-full bg-clr-orange-dark text-[10px] font-bold text-white"
+              }`}
+            >
+              {cartQuantity}
+            </span>
+          )}
+
           <IconCart />
         </div>
         <Avatar className=" cursor-pointer rounded-full transition-all duration-150 ease-in-out hover:outline hover:outline-2 hover:outline-offset-1 hover:outline-orange-500" />

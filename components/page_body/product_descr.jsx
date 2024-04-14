@@ -9,7 +9,6 @@ import { useState, useContext } from "react";
 import { CartContext } from "@context/CartContext";
 
 const ProductDescr = ({ className }) => {
-  // const [quantity, setQuantity] = useState(1);
   const { addToCart } = useContext(CartContext);
   const [productQuantity, setProductQuantity] = useState(1);
 
@@ -76,7 +75,10 @@ const ProductDescr = ({ className }) => {
             className={
               "flex h-[56px] w-full items-center justify-center gap-6  rounded-xl  bg-clr-orange-dark font-bold text-white drop-shadow-[0_25px_25px_rgba(255,125,26,0.25)] hover:cursor-pointer hover:opacity-75 md:drop-shadow-none"
             }
-            onClick={() => addToCart(productQuantity)}
+            onClick={() => {
+              addToCart(productQuantity);
+              setProductQuantity(1);
+            }}
           />
         </div>
       </div>
