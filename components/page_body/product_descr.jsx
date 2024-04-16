@@ -5,7 +5,7 @@ import {
   ButtonDecrement,
   ButtonAddToCart,
 } from "@components/ui/buttons";
-import { productPrice } from "@lib/utils";
+import { productPrice, formatCurrency } from "@lib/utils";
 import { useState, useContext } from "react";
 import { CartContext } from "@context/CartContext";
 
@@ -38,7 +38,7 @@ const ProductDescr = ({ className }) => {
           <div className="flex items-center gap-6">
             <span className="text-[1.75rem] font-bold">
               <span className="sr-only">Discounted price</span>
-              {"$" + productPrice.toFixed(2)}
+              {formatCurrency(productPrice)}
             </span>
             <span className="rounded-lg bg-clr-orange-light px-2 py-1 text-base font-bold text-clr-orange-dark">
               <span className="sr-only">Discounted %</span>
