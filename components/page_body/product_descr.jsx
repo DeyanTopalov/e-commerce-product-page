@@ -74,7 +74,7 @@ const ProductDescr = ({ className }) => {
 
           <ButtonAddToCart
             className={
-              "flex h-[56px] w-full items-center justify-center gap-6  rounded-xl  bg-clr-orange-dark font-bold text-white drop-shadow-[0_25px_25px_rgba(255,125,26,0.25)] hover:cursor-pointer hover:opacity-75 md:drop-shadow-none"
+              "flex h-[56px] w-full cursor-pointer items-center justify-center  gap-6  rounded-xl bg-clr-orange-dark font-bold text-white drop-shadow-[0_25px_25px_rgba(255,125,26,0.25)] hover:opacity-75 md:drop-shadow-none"
             }
             onClick={() => {
               addToCart(productQuantity);
