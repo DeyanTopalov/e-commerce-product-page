@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import { useLocalStorage } from "@lib/hooks";
 
 const CartContext = createContext({
@@ -15,8 +15,13 @@ const CartProvider = ({ children }) => {
     setCartQuantity(cartQuantity + newQuantity);
   };
 
+  const deleteFromCart = () => {
+    setCartQuantity(0);
+    localStorage.removeItem("cartQuantity");
+  };
+
   return (
-    <CartContext.Provider value={{ cartQuantity, addToCart }}>
+    <CartContext.Provider value={{ cartQuantity, addToCart, deleteFromCart }}>
       {children}
     </CartContext.Provider>
   );

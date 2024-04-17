@@ -83,3 +83,26 @@ export const ButtonPrevious = ({ className, onClick }) => {
     </button>
   );
 };
+
+export const ButtonIcon = ({
+  className,
+  onClick,
+  role,
+  type,
+  ariaLabel,
+  children,
+}) => {
+  const btnAriaLabel = ariaLabel || children?.toString()?.trim();
+
+  return (
+    <button
+      className={className}
+      onClick={onClick}
+      role={role || "button"}
+      type={type || "button"}
+      aria-label={btnAriaLabel}
+    >
+      {children}
+    </button>
+  );
+};

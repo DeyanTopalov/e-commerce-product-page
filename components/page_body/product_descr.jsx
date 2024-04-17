@@ -5,7 +5,7 @@ import {
   ButtonDecrement,
   ButtonAddToCart,
 } from "@components/ui/buttons";
-import { productPrice, formatCurrency } from "@lib/utils";
+import { formatCurrency, productInfo } from "@lib/utils";
 import { useState, useContext } from "react";
 import { CartContext } from "@context/CartContext";
 
@@ -23,31 +23,29 @@ const ProductDescr = ({ className }) => {
   return (
     <div className={className}>
       <h1 className="text-xs font-bold uppercase tracking-widest text-clr-orange-dark md:text-sm">
-        Sneaker Company
+        {productInfo.company}
       </h1>
       <h2 className="text-[1.75rem] font-bold leading-snug md:text-[2.75rem] md:leading-[3rem]">
-        Fall Limited Edition Sneakers
+        {productInfo.title}
       </h2>
       <p className="text-[15px] text-clr-blue-600 md:text-base ">
-        These low-profile sneakers are your perfect casual wear companion.
-        Featuring a durable rubber outer sole, they&apos;ll withstand everything
-        the weather can offer.
+        {productInfo.description}
       </p>
-      <div className="Pricing_and_buttons grid gap-4 md:gap-8">
+      <div className=" grid gap-4 md:gap-8">
         <div className="pricing flex w-full items-center justify-between md:flex-col md:items-start md:gap-3">
           <div className="flex items-center gap-6">
             <span className="text-[1.75rem] font-bold">
               <span className="sr-only">Discounted price</span>
-              {formatCurrency(productPrice)}
+              {formatCurrency(productInfo.discountedPrice)}
             </span>
             <span className="rounded-lg bg-clr-orange-light px-2 py-1 text-base font-bold text-clr-orange-dark">
               <span className="sr-only">Discounted %</span>
-              50%
+              {productInfo.discountPercentage}
             </span>
           </div>
           <span className="font-bold text-clr-blue-400 line-through">
             <span className="sr-only">Original price</span>
-            $250.00
+            {formatCurrency(productInfo.originalPrice)}
           </span>
         </div>
         <div className="btns_and_counter grid gap-4 md:grid-cols-[37%,63%]">
@@ -89,4 +87,4 @@ const ProductDescr = ({ className }) => {
 
 export default ProductDescr;
 
-// remove the draft classes of Pricing_and_buttons etc..
+// remove the draft classes of Pricing_and_buttons etc.. and upd px to rem

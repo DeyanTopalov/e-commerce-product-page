@@ -6,13 +6,19 @@ import Image from "next/image";
 import HamburgerMenu from "./hamburger_menu";
 import HamburgerButton from "./hamburger_button";
 import { IconCart, Avatar, Logo, IconDelete } from "../ui/icons";
-import { productPrice, formatCurrency } from "@lib/utils";
+import { ButtonIcon } from "@components/ui/buttons";
+import { productInfo, formatCurrency } from "@lib/utils";
 import { productThumbnails } from "@lib/utils";
 
 const Navigation = () => {
   const [isClient, setIsClient] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const { cartQuantity } = useContext(CartContext);
+  const [showCart, setShowCart] = useState(false);
+  const { cartQuantity, deleteFromCart } = useContext(CartContext);
+
+  const handleDelete = () => {
+    deleteFromCart();
+  };
 
   useEffect(() => {
     setIsClient(true);
@@ -20,6 +26,10 @@ const Navigation = () => {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const toggleCart = () => {
+    setShowCart(!showCart);
   };
 
   return (
@@ -52,54 +62,81 @@ const Navigation = () => {
               {cartQuantity}
             </span>
           )}
-
-          <IconCart />
+          <ButtonIcon
+            className="cursor-pointer"
+            onClick={toggleCart}
+            ariaLabel="Cart"
+          >
+            <IconCart />
+          </ButtonIcon>
         </div>
         <Avatar className=" cursor-pointer rounded-full transition-all duration-150 ease-in-out hover:outline hover:outline-2 hover:outline-offset-1 hover:outline-orange-500" />
       </div>
-      {/* fix for client render only due to hidration */}
-      <div className="absolute inset-0 -z-10 flex h-full  w-full justify-center  md:justify-end">
-        {/* fix nav border overlay due to -z-10 */}
-        <div className=" z-[9999] flex h-[256px] w-full max-w-[360px] translate-y-[76px] flex-col rounded-xl  bg-white px-6 pb-8  pt-6 shadow-2xl md:translate-y-[94px]">
-          <h2 className="border-b-[1px] border-slate-200 pb-7 font-bold">
-            Cart
-          </h2>
-          <div
-            className={` ${cartQuantity > 0 ? "hidden" : "grid h-full w-full place-content-center"} `}
-          >
-            <p className="font-bold text-clr-blue-600">Your Cart is empty</p>
-          </div>
+      {/* Cart */}
+      {isClient && (
+        <>
+          {showCart && (
+            <div className="absolute inset-0 -z-10 flex h-full  w-full justify-center   md:justify-end">
+              <div className="animate-fadein z-[9999] flex h-[256px] w-full max-w-[360px] translate-y-[76px] flex-col rounded-xl  bg-white px-6 pb-8  pt-6  shadow-2xl  md:translate-y-[7.5rem]">
+                <h2 className="border-b-[1px] border-slate-200 pb-7 font-bold">
+                  Cart
+                </h2>
+                <div
+                  className={` ${cartQuantity > 0 ? "hidden" : "grid h-full w-full place-content-center"} `}
+                >
+                  <p className="font-bold text-clr-blue-600">
+                    Your Cart is empty
+                  </p>
+                </div>
 
-          <div className={`${cartQuantity < 1 ? "hidden" : "block"} pt-6   `}>
-            <div className=" flex items-center justify-between">
-              <div className="img size-[3.125rem] overflow-hidden rounded-lg">
-                <Image
-                  src={productThumbnails[0].url}
-                  width={50}
-                  height={50}
-                  alt={`Product Image`}
-                  className="h-full w-full object-cover"
-                />
+                <div
+                  className={`${cartQuantity < 1 ? "hidden" : "block"} pt-6   `}
+                >
+                  <div className=" flex items-center justify-between">
+                    <div className="img size-[3.125rem] overflow-hidden rounded-lg">
+                      <Image
+                        src={productThumbnails[0].url}
+                        width={50}
+                        height={50}
+                        alt={`Product Image`}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                    <div className="descr text-clr-blue-600">
+                      <p>{productInfo.title}</p>
+                      <p>
+                        {formatCurrency(productInfo.discountedPrice) +
+                          " x" +
+                          cartQuantity +
+                          " "}
+                        <span className="font-bold text-slate-950">
+                          {formatCurrency(
+                            productInfo.discountedPrice * cartQuantity,
+                          )}
+                        </span>
+                      </p>
+                    </div>
+                    <button
+                      className="bin cursor-pointer"
+                      onClick={handleDelete}
+                    >
+                      <IconDelete />
+                    </button>
+                  </div>
+                  <button
+                    className="mt-6 h-[56px] w-full cursor-pointer rounded-xl bg-clr-orange-dark font-bold text-white hover:opacity-75"
+                    type="button"
+                    role="button"
+                    ariaLabel="Checkout"
+                  >
+                    Checkout
+                  </button>
+                </div>
               </div>
-              <div className="descr text-clr-blue-600">
-                <p>Fall Limited Edition Sneakers</p>
-                <p>
-                  {formatCurrency(productPrice) + " x" + cartQuantity + " "}
-                  <span className="font-bold text-slate-950">
-                    {formatCurrency(productPrice * cartQuantity)}
-                  </span>
-                </p>
-              </div>
-              <button className="bin cursor-pointer">
-                <IconDelete />
-              </button>
             </div>
-            <button className="mt-6 h-[56px] w-full rounded-xl bg-clr-orange-dark font-bold text-white hover:opacity-75">
-              Checkout
-            </button>
-          </div>
-        </div>
-      </div>
+          )}
+        </>
+      )}
     </section>
   );
 };
@@ -109,6 +146,4 @@ export default Navigation;
 // remove the draft classes of Pricing_and_buttons etc..
 
 //! ToDo
-//* Export Cart dropdown to component
-//* work on click outside the cart to close
-//* add delete functionality
+//* Update all px to rem
