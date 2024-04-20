@@ -32,6 +32,7 @@
   }
 }
 
+/* Style-guide notes */
 /* ### Primary 
 - Orange: hsl(26, 100%, 55%) 
 - Pale orange: hsl(25, 100%, 94%) 
@@ -43,11 +44,7 @@
 - Light grayish blue: hsl(223, 64%, 98%) 
 - White: hsl(0, 0%, 100%) - Black (with 75% opacity for lightbox background): hsl(0, 0%, 0%) */
 
-.test {
-  color: hsl(223, 64%, 98%);
-  color: rgb(255, 125, 26);
-  color: hsl(219, 9%, 45%);
-}
+
 
 .scrollbar-hidden::-webkit-scrollbar {
   height: 0 !important;

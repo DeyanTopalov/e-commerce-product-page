@@ -21,18 +21,18 @@ const ProductDescr = ({ className }) => {
   };
 
   return (
-    <div className={className}>
+    <section className={className}>
       <h1 className="text-xs font-bold uppercase tracking-widest text-clr-orange-dark md:text-sm">
         {productInfo.company}
       </h1>
       <h2 className="text-[1.75rem] font-bold leading-snug md:text-[2.75rem] md:leading-[3rem]">
         {productInfo.title}
       </h2>
-      <p className="text-[15px] text-clr-blue-600 md:text-base ">
+      <p className="text-[0.9375rem] text-clr-blue-600 md:text-base ">
         {productInfo.description}
       </p>
       <div className=" grid gap-4 md:gap-8">
-        <div className="pricing flex w-full items-center justify-between md:flex-col md:items-start md:gap-3">
+        <div className=" flex w-full items-center justify-between md:flex-col md:items-start md:gap-3">
           <div className="flex items-center gap-6">
             <span className="text-[1.75rem] font-bold">
               <span className="sr-only">Discounted price</span>
@@ -48,8 +48,8 @@ const ProductDescr = ({ className }) => {
             {formatCurrency(productInfo.originalPrice)}
           </span>
         </div>
-        <div className="btns_and_counter grid gap-4 md:grid-cols-[37%,63%]">
-          <div className="grid h-[56px] w-full grid-cols-3 place-items-center gap-20 overflow-hidden rounded-xl bg-clr-blue-200 md:gap-0 ">
+        <div className="grid gap-4 md:grid-cols-[37%,63%]">
+          <div className="grid h-[3.5rem] w-full grid-cols-3 place-items-center gap-20 overflow-hidden rounded-xl bg-clr-blue-200 md:gap-0 ">
             <ButtonDecrement
               className={
                 "flex size-full cursor-pointer items-center  justify-center hover:opacity-75"
@@ -72,7 +72,7 @@ const ProductDescr = ({ className }) => {
 
           <ButtonAddToCart
             className={
-              "flex h-[56px] w-full cursor-pointer items-center justify-center  gap-6  rounded-xl bg-clr-orange-dark font-bold text-white drop-shadow-[0_25px_25px_rgba(255,125,26,0.25)] hover:opacity-75 md:drop-shadow-none"
+              "flex h-[3.5rem] w-full cursor-pointer items-center justify-center  gap-6  rounded-xl bg-clr-orange-dark font-bold text-white drop-shadow-[0_25px_25px_rgba(255,125,26,0.25)] hover:opacity-75 md:drop-shadow-none"
             }
             onClick={() => {
               addToCart(productQuantity);
@@ -81,10 +81,8 @@ const ProductDescr = ({ className }) => {
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
 export default ProductDescr;
-
-// remove the draft classes of Pricing_and_buttons etc.. and upd px to rem

@@ -56,7 +56,7 @@ const Navigation = () => {
               className={`${
                 cartQuantity < 1
                   ? "hidden"
-                  : "badge full absolute -right-1 -top-1 flex h-[13px] w-[19px] items-center justify-center rounded-full bg-clr-orange-dark text-[10px] font-bold text-white"
+                  : "full absolute -right-1 -top-1 flex h-[0.8125rem] w-[1.1875rem] items-center justify-center rounded-full bg-clr-orange-dark text-[0.625rem] font-bold text-white"
               }`}
             >
               {cartQuantity}
@@ -77,7 +77,7 @@ const Navigation = () => {
         <>
           {showCart && (
             <div className="absolute inset-0 -z-10 flex h-full  w-full justify-center   md:justify-end">
-              <div className="animate-fadein z-[9999] flex h-[256px] w-full max-w-[360px] translate-y-[76px] flex-col rounded-xl  bg-white px-6 pb-8  pt-6  shadow-2xl  md:translate-y-[7.5rem]">
+              <div className="animate-fadein z-[9999] flex h-[16rem] w-full max-w-[22.5rem] translate-y-[4.75rem] flex-col rounded-xl  bg-white px-6 pb-8  pt-6  shadow-2xl  md:translate-y-[7.5rem]">
                 <h2 className="border-b-[1px] border-slate-200 pb-7 font-bold">
                   Cart
                 </h2>
@@ -93,7 +93,7 @@ const Navigation = () => {
                   className={`${cartQuantity < 1 ? "hidden" : "block"} pt-6   `}
                 >
                   <div className=" flex items-center justify-between">
-                    <div className="img size-[3.125rem] overflow-hidden rounded-lg">
+                    <div className=" size-[3.125rem] overflow-hidden rounded-lg">
                       <Image
                         src={productThumbnails[0].url}
                         width={50}
@@ -102,7 +102,7 @@ const Navigation = () => {
                         className="h-full w-full object-cover"
                       />
                     </div>
-                    <div className="descr text-clr-blue-600">
+                    <div className=" text-clr-blue-600">
                       <p>{productInfo.title}</p>
                       <p>
                         {formatCurrency(productInfo.discountedPrice) +
@@ -116,15 +116,12 @@ const Navigation = () => {
                         </span>
                       </p>
                     </div>
-                    <button
-                      className="bin cursor-pointer"
-                      onClick={handleDelete}
-                    >
+                    <button className="cursor-pointer" onClick={handleDelete}>
                       <IconDelete />
                     </button>
                   </div>
                   <button
-                    className="mt-6 h-[56px] w-full cursor-pointer rounded-xl bg-clr-orange-dark font-bold text-white hover:opacity-75"
+                    className="mt-6 h-[3.5rem] w-full cursor-pointer rounded-xl bg-clr-orange-dark font-bold text-white hover:opacity-75"
                     type="button"
                     role="button"
                     ariaLabel="Checkout"
@@ -142,8 +139,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-
-// remove the draft classes of Pricing_and_buttons etc..
-
-//! ToDo
-//* Update all px to rem
